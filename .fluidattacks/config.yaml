@@ -1,4 +1,0 @@
-# .fluidattacks/config.yaml
-
-probes:
-  - sast  

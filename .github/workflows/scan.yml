@@ -10,8 +10,16 @@ jobs:
       - name: Run scan
         uses: docker://docker.io/fluidattacks/skims:latest
         with:
-          args: skims scan ./config.yml
-        continue-on-error: true  
+          python-version: '3.10'
+      - name: Install pandas
+        run: pip install pandas openpyxl
+      - name: Clean Skims Report
+        run: python clean_skims_report.py
+      - name: Upload Cleaned Excel Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: fluid-attacks-report-limpio
+          path: Fluid-Attacks-Report-LIMPIO.xlsx
       - name: Upload CSV Report
         uses: actions/upload-artifact@v4
         with:

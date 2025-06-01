@@ -1,9 +1,10 @@
-namespace: WACKOPICKO
+namespace: WackoPicko
 output:
   file_path: ./Fluid-Attacks-Results.csv
   format: CSV
 working_dir: .
 language: EN
+strict: true
 sast:
   include:
     - .

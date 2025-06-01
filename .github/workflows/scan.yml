@@ -1,12 +1,21 @@
-name: Fluid Attacks Skims
-on: [push, pull_request]
+# .github/workflows/scan-export.yml
+name: Fluid Attacks Skims - Config and Export
+
+on: [workflow_dispatch]
 
 jobs:
-  skims:
+  scan_export:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Copy config
+        run: cp skims.yml .
       - uses: docker://docker.io/fluidattacks/skims:latest
-        name: skimsStandalone
+        name: skimsConfigExport
         with:
-          args: skims scan . --fail-on HIGH
+          args: skims scan . --config config.yml
+      - name: Upload CSV Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: skims-csv-report
+          path: skims-report.csv

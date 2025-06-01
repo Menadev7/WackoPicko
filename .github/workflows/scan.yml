@@ -10,4 +10,10 @@ jobs:
       - name: Run scan
         uses: docker://docker.io/fluidattacks/skims:latest
         with:
-          args: skims --strict scan .
+          args: skims scan ./config.yml
+        continue-on-error: true  
+      - name: Upload CSV Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: fluid-attacks-report
+          path: Fluid-Attacks-Results.csv

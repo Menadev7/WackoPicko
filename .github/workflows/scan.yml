@@ -13,7 +13,7 @@ jobs:
       - uses: docker://docker.io/fluidattacks/skims:latest
         name: skimsConfigExport
         with:
-          args: skims scan . --config config.yml
+          args: skims scan . config.yml
       - name: Upload CSV Report
         uses: actions/upload-artifact@v4
         with:

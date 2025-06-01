@@ -1,7 +1,6 @@
 # .github/workflows/scan-export.yml
-name: Fluid Attacks Skims - Config and Export
-
-on: [workflow_dispatch]
+name: Standalone CLI
+on: [push, pull_request]
  
 jobs:
   scan_export:

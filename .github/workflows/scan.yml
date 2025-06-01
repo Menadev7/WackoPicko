@@ -10,7 +10,7 @@ jobs:
       - name: Run scan
         uses: docker://docker.io/fluidattacks/skims:latest
         with:
-          args: skims scan . 
+          args: skims scan . ./config
       - name: Upload CSV Report
         uses: actions/upload-artifact@v4
         with:

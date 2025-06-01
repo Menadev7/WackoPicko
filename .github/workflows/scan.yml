@@ -1,21 +1,18 @@
-# .github/workflows/scan-export.yml
-name: Standalone CLI
+name: Fluid Attacks Skims - Config and Export
+
 on: [push, pull_request]
- 
+
 jobs:
   scan_export:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Run scan
-      - uses: docker://docker.io/fluidattacks/skims:latest
-
-        name: skimsConfigExport
+        uses: docker://docker.io/fluidattacks/skims:latest
         with:
           args: skims scan . --config config.yml
-          
       - name: Upload CSV Report
         uses: actions/upload-artifact@v4
         with:
           name: skims-csv-report
-          path: skims-report.csv
+          path: skims-report.csv   # O pon aquí el nombre correcto según tu config.yml

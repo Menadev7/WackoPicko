@@ -8,6 +8,3 @@ strict: true
 sast:
   include:
     - .
-  exclude:
-    - glob(**/node_modules/**)
-    - glob(**/test/**)

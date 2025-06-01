@@ -6,9 +6,10 @@ jobs:
   scan_export:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout 
       - uses: actions/checkout@v4
+
       - name: Run scan
-        run: cp skims.yml .
       - uses: docker://docker.io/fluidattacks/skims:latest
 
         name: skimsConfigExport

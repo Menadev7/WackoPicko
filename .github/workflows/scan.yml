@@ -7,12 +7,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Copy config
+      - name: Run scan
         run: cp skims.yml .
       - uses: docker://docker.io/fluidattacks/skims:latest
+
         name: skimsConfigExport
         with:
           args: skims scan . --config config.yml
+          
       - name: Upload CSV Report
         uses: actions/upload-artifact@v4
         with:

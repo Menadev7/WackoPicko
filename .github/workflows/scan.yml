@@ -10,9 +10,9 @@ jobs:
       - name: Run scan
         uses: docker://docker.io/fluidattacks/skims:latest
         with:
-          args: skims scan . --config config.yml
+          args: skims scan . ./config.yml
       - name: Upload CSV Report
         uses: actions/upload-artifact@v4
         with:
           name: skims-csv-report
-          path: skims-report.csv   # O pon aquí el nombre correcto según tu config.yml
+          path: skims-report.csv 

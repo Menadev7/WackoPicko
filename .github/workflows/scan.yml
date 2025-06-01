@@ -1,5 +1,5 @@
-name: Fluid Attacks Skims - Config and Export
-
+# .github/workflows/dev.yml
+name: Standalone CLI
 on: [push, pull_request]
 
 jobs:
@@ -10,7 +10,7 @@ jobs:
       - name: Run scan
         uses: docker://docker.io/fluidattacks/skims:latest
         with:
-          args: skims scan . --config config.yml
+          args: skims scan . 
       - name: Upload CSV Report
         uses: actions/upload-artifact@v4
         with:
